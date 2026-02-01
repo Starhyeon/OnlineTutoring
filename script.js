@@ -1,21 +1,20 @@
-const cards = document.querySelectorAll(".card");
-let index = 0;
+const slides = document.querySelectorAll(".slide");
+let current = 0;
 
 setInterval(() => {
-  const current = cards[index];
-  current.classList.remove("active");
-  current.classList.add("exit");
+  const outgoing = slides[current];
+  outgoing.classList.remove("active");
+  outgoing.classList.add("exit");
 
-  index = (index + 1) % cards.length;
-  const next = cards[index];
+  current = (current + 1) % slides.length;
+  const incoming = slides[current];
 
-  next.classList.remove("exit");
-  next.classList.add("active");
+  incoming.classList.remove("exit");
+  incoming.classList.add("active");
 
-  // cleanup old exit
   setTimeout(() => {
-    current.classList.remove("exit");
-    current.style.transform = "translateX(100%)";
-  }, 800);
+    outgoing.classList.remove("exit");
+    outgoing.style.transform = "translateX(120%)";
+  }, 900);
 
 }, 4000);
